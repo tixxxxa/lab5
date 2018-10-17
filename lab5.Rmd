@@ -1,0 +1,60 @@
+---
+title: "Lab5"
+author: "Lingchen Lou"
+date: 'Due noon October 17, 2018'
+output:
+  pdf_document:
+    fig_height: 4
+    fig_width: 7
+---
+
+## 1) Suppose you are betting that you get at least one six in 4 throws of a die.Write a function that simulates one round of the game and prints out whether you win or lose.
+
+```{r}
+dice = c(1:6)
+win=0
+game <- function(N) {
+  for(i in seq_len(N)) {
+    x = sample(dice, size = 4, replace=TRUE)
+    if(6 %in% x ) {
+      win = win + 1
+    }
+  }
+  prop = round(win / N, 4)
+  return(prop)
+}
+
+game(1000)
+game(10000)
+```
+
+## 2) Write a function that will find the smallest element of a given vector (built-in min() is not allowed). Your function should return the smallest element and index of the smallest element.Ex. vector is (1, 4, 2, 0, 5), then the smallest element - 0 and index is 4.
+```{r}
+
+MinInd <- function(x){
+min= x[1]
+index=1
+  if(length(x)>1){
+    for(i in 2:length(x)){
+      if(x[i]<min){
+        min = x[i]
+        index = i
+      }
+    }
+  }
+print(paste("Minimun is", min))
+print(paste("Index:",c( which(x %in% c(min)))))
+
+}
+
+MinInd(c(1, 4, 2, 0, 5))
+MinInd (c(1,7,1,0,9,0,2))
+
+```
+
+
+
+
+
+
+
